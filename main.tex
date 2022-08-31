@@ -1,0 +1,462 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,
+linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{amsbsy}
+\usepackage{url}
+\usepackage{float}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usepackage{esint}
+\newtheorem{definition}{Definição}
+%\newtheorem{example}{Exemplo}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{Curso - \LaTeX}
+\author{Luiz}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Sites Uteis}
+Carlos Campani - UFPEL (Tutorial Beamer)
+
+\LaTeX in 24 hours 
+CTAN 
+\section{Aula 1}
+\subsection{Escrevendo Equações}
+\subsection{Escrevendo uma Integral Definida}
+Com o comando begin:
+\begin{equation}
+    \int_{-\infty}^{+\infty}xf(x) \ dx = E(x) = \bar{x}
+\end{equation}
+Usando o duplo $\$$:
+$$\int_{-\infty}^{+\infty}xf(x) \ dx = E(x) = \bar{x}$$
+Equação alinhada ao texto, usamos o $\$$ simples:
+$\int_{-\infty}^{+\infty}xf(x) \ dx = E(x) = \bar{x}$
+\subsection{Escrevendo um Somatório}
+\begin{equation}
+    \sum_{i=0}^{\infty} \frac{f^{n}(x_{0})}{i!}
+\end{equation}
+\subsection{Escrevendo um sistema de equações}
+\begin{equation}
+    \begin{cases}
+    a_{11}x + a_{n}y = b_{1} \\
+    a_{21}x + a_{n}y = b_{2}
+    \end{cases}
+\end{equation}
+\subsection{Escrevendo Matrizes e Determinantes}
+\subsection{Matrizes com Parentêses}
+\begin{equation}
+    \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+    \end{pmatrix}
+\end{equation}
+\subsection{Matrizes com Colchetes}
+\begin{equation}
+    \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+    \end{bmatrix}
+\end{equation}
+\subsection{Determinantes}
+\begin{equation}
+    \begin{vmatrix}
+    1 & 0 \\
+    0 & 1
+    \end{vmatrix}
+\end{equation}
+\subsection{Escrevendo pontos (reticências) em equações}
+\begin{itemize}
+    \item Pontos horizontais 
+    \begin{equation}
+        \cdots
+    \end{equation}
+    \item Pontos Verticais
+    \begin{equation}
+        \vdots
+    \end{equation}
+    \item Pontos Diagonais
+    \begin{equation}
+        \ddots
+    \end{equation}
+\end{itemize}
+\subsection{Letras Gregas}
+\begin{itemize}
+    \item Alfa Minúsculo - $\alpha$
+    \item Beta Minúsculo - $\beta$ 
+    \item Gama Minúsculo - $\gamma$
+    \item Gama Maiúsculo - $\Gamma$
+\end{itemize}
+\section{Aula 2}
+\subsection{Exercício}
+No \LaTeX quando escrevemos funções, devemos pensar em concatenação de símbolos. Quando escrevemos equações e símbolos mais robustos, criamos um ambiente e dentro desse ambiente criamos um outro ambiente, como por exemplo no caso de matrizes: Criamos o ambiente equation e dentro do equation criamos o ambiente bmatrix para matriz com colchete, pmatrix para matriz com parênteses e vmatrix para determinantes.
+\begin{itemize}
+    \item $cos(t),sin(t),e^{x},f(x),\alpha(t)$
+    \item Derivada de uma função qualquer:$$\dfrac{df(x)}{dx} \Big|_{x=0} = f^{'}(0)$$
+    \item Regra da Produto para Derivadas
+    \begin{equation}
+        \dfrac{d}{dx}f(x)g(x) = \dfrac{df}{dx}g(x) + f(x)\dfrac{dg}{dx}
+    \end{equation}
+    \item Limite de uma função qualquer
+    \begin{equation}
+        \lim_{x\to a}f(x) = f(a)
+    \end{equation}
+    Nesse caso, no lugar do comando "to"  podemos usar o comando "rightarrow"
+    \item Limite de uma função com fração
+    \begin{equation}
+        \lim_{x \to 0}\frac{x + 2}{x + 1}= 2
+    \end{equation}
+    \item Alinhando a equação
+    \begin{align}
+        1 + 2 + 3 + 4 + 5 &= 
+        (1 + 2) + (3 + 4) \\
+        %
+        &= 3 + 7 + 5 \\
+        %
+        &= 10 + 5\\
+        % 
+        &= 15
+    \end{align}
+    \item Escrevendo um limite alinhado 
+    \begin{align}
+        \lim_{x \to 1}\frac{x^{2} - 1}{x-1} &= \lim_{x \to 1}\frac{(x-1)(x+1)}{x-1} \\
+        %
+        &= \lim_{x \to 1}x+1 \\
+        %
+        &= 2
+    \end{align}
+    \item Escrevendo uma integral indefinida
+    \begin{equation}
+        \int e^{x}\ dx = e^{x} + k, k \in \mathbb{R}
+    \end{equation}
+    \item Escrevendo uma integral definida com a barra 
+    \begin{equation}
+        \int_{0}^{1} e^{x} \ dx = e^{x} \Big |_{0}^{1}
+    \end{equation}
+    \item Escrevendo um sistema de equações com o align 
+    \begin{align}
+        \begin{cases}
+            2x + y &= 1\\
+            x + 2y &= 0
+        \end{cases}
+    \end{align}
+    \item Escrevendo a Matriz dos coeficientes do sistema acima
+    \begin{equation}
+        \begin{bmatrix}
+            2 & 1 \\
+            1 & 2
+        \end{bmatrix}
+    \end{equation}
+    \item Escrevendo uma matriz genérica qualquer:
+    \begin{equation}
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            e^{x} & f(x) & t 
+        \end{pmatrix}
+    \end{equation}
+    \item Escrevendo uma outra matriz genérica 
+    \begin{equation}
+        \begin{bmatrix}
+            t^{3} & x_{12} & y^{34} \\ 
+            e^{x} & |u \times v| & t \cdot x
+        \end{bmatrix}
+    \end{equation}
+    \item Representando o produto entre matrizes que origina o sistema já feito acima:
+    \begin{equation}
+        \begin{bmatrix}
+            2 & 1 \\ 
+            1 & 2 
+        \end{bmatrix}
+        \cdot 
+        \begin{bmatrix}
+            x \\ 
+            y
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix}
+    \end{equation}
+\end{itemize}
+\section{Teoremas e Demonstrações}
+\subsection{1° Teorema de Bem-Estar}
+O 1° Teorema do Bem-estar postula que para toda economia, a alocação de Equilíbrio é pareto eficiente. Isto é o conjunto das alocações de equilíbrio de Walras esta contido no conjunto de alocações pareto eficientes. Em uma linguagem matemática, enunciamos o teorema assim: 
+\begin{equation}
+    W(\boldsymbol{\varepsilon}) \subset Par(\boldsymbol{\varepsilon})
+\end{equation}
+\subsection{Demonstração}
+Considere $f$ como uma alocação Walrasiana, ou seja, $f \in W(\boldsymbol{\varepsilon)}$ e suponha, por contradição, que a alocação $f$ não seja pareto eficiente, isso é, $f \notin Par(\boldsymbol{\varepsilon)}$.
+Se a alocação não é pareto eficiente ela pode ser melhorada. Então existe uma outra alocação factível $g$ dentro dessa economia, com $g \neq f$.
+Como não estamos fazendo a distinção entre eficiência forte e fraca, podemos escrever que:
+\begin{enumerate}
+    \item $g(a) \succ_a f(a)$ \label{condiçao1}
+    \item \begin{equation}
+        \sum_{a \in A}^{n} g(a) = \sum_{a \in A}^{n} e(a)
+        \label{condiçao2}
+    \end{equation}
+\end{enumerate}
+Na condição 1 ~(\ref{condiçao1}) temos que para todo $a \in A$, isto é, todos os agentes de $A$ tem uma cesta melhor. Já a condição 2 ~(\ref{condiçao2}) temos a condição de equilíbrio geral, pois $g$ é factível.
+
+Se $f$ é uma alocação de Walras, então temps um vetor de preço de equilibrio, denotado por \boldsymbol{\rho}, com coordenadas estritamente positivas, isso é $\boldsymbol{\rho} \gg 0$. Isso é garantido pelo Teorema da Existência do Equilíbrio de Walras. O vetor preço de equilíbrio esta associado a alocação $f \in W(\boldsymbol{\varepsilon})$.
+Como $\boldsymbol{\rho}$ é o vetor de preço de equilíbrio, então como a cesta $g$ já é melhor que $f$, ela tem que ser mais cara, aos preços de equilíbrio para todo agente ~(\ref{condicaopreco})
+\begin{equation}
+    \boldsymbol{\rho}\cdot g(a) > \boldsymbol{\rho}\cdot f(a), \forall a \in A
+    \label{condicaopreco}
+\end{equation}
+Somando os agentes temos ~(\ref{somaagente}):
+\begin{equation}
+    \sum_{a \in A}^{n}\boldsymbol{\rho}\cdot g(a)  > \sum_{a \in A}^{n}\boldsymbol{\rho}\cdot f(a) 
+        \label{somaagente}
+\end{equation}
+Isso é equivalente a multiplicar o vetor de preços $\boldsymbol{\rho}$ pela demanda total ~(\ref{demandatotalproduto})
+\begin{equation}
+    \boldsymbol{\rho}\cdot \sum_{a \in A}^{n}g(a)  > \boldsymbol{\rho}\cdot \sum_{a \in A}^{n}f(a)
+    \label{demandatotalproduto}
+\end{equation}
+Passando tudo na equação ~(\ref{demandatotalproduto}) para a esquerda e pondo $\boldsymbol{\rho}$ em evidência temos ~(\ref{evidenciap}): 
+\begin{equation}
+    \boldsymbol{\rho}\cdot \left[\sum_{a \in A}^{n}g(a) - \sum_{a \in A}^{n}f(a)\right] > 0
+    \label{evidenciap}
+\end{equation}
+Como tanto $f$ quanto $g$ são factíveis temos que pela condição de equilibrio:
+\begin{equation}
+    \sum_{a \in A}^{n} g(a) = \sum_{a \in A}^{n} e(a)
+\end{equation}
+\begin{equation}
+    \sum_{a \in A}^{n} f(a) = \sum_{a \in A}^{n} e(a)
+\end{equation}
+Dessa forma por fim:
+\begin{equation}
+    \boldsymbol{\rho}\cdot \left[\sum_{a \in A}^{n}e(a) - \sum_{a \in A}^{n}e(a)\right] > 0
+\end{equation}
+Porém:
+\begin{equation}
+    \sum_{a \in A}^{n}e(a) - \sum_{a \in A}^{n}e(a) = 0
+\end{equation}
+temos uma contradição expressada por: 
+\begin{equation}
+    \boldsymbol{\rho}\cdot 0 > 0
+\end{equation}
+Logo, o teorema encontra-se demonstrado!
+\subsection{Conservação da Massa usando o Teorema do Transporte de Reynolds}
+Nessa seção iremos demonstrar a formulação diferencial para a lei de conservação da massa por meio do Teorema do Transporte de Reynolds, esse teorema nos diz o seguinte:
+\begin{equation}
+    \dfrac{dB_s_i_s_t}{dt} = \int_{VC}\frac{\partial}{\partial t}(\rho \cdot b) d\forall + \int_{SC}\rho b(\Vec{V} \cdot \widehat{n})dS
+\end{equation}
+A lei da conservação da massa nos diz que: 
+\begin{equation}
+    \dfrac{dm_s_i_s_t}{dt} = 0
+\end{equation}
+Fazendo $B = m$ e $b = 1$ obtemos o seguinte no Teorema do Transporte de Reynolds:
+\begin{equation}
+    \dfrac{dm_s_i_s_t}{dt} = \int_{VC}\frac{\partial}{\partial t}(\rho)d\forall + \int_{SC}\rho(\Vec{V} \cdot \widehat{n})dS
+    \label{teoremadotransporte}
+\end{equation}
+Pelo Teorema da Divergência podemos transformar a integral ~(\ref{integral}) que é uma integral de superfície em uma integral de volume. 
+\begin{equation}
+    \int_{SC}\rho(\Vec{V} \cdot \widehat{n})dS
+    \label{integral}
+\end{equation}
+O Teorema da Divergência postula que seja um campo vetorial $\Vec{f}$: 
+\begin{equation}
+    \int_{\forall}\Vec{\nabla}\cdot \Vec{f}d\forall = \int_{S}\Vec{f}\cdot\widehat{n}dS
+    \label{teoremadadiv}
+\end{equation}
+Comparando o Teorema da Divergência postulado em ~(\ref{teoremadadiv}) com o que temos na integral ~(\ref{integral}), vemos que $\Vec{f} = \rho\Vec{V}$. Logo
+\begin{equation}
+    \int_{SC}(\rho\Vec{V})\cdot\widehat{n}dS = \int_{VC}\Vec{\nabla}\cdot(\rho\Vec{V})d\forall
+\end{equation}
+Assim podemos substituir a integral no próprio Teorema do Transporte de Reynolds ~(\ref{teoremadotransporte} e somar as integrais, dadas que elas estão na mesma região ou volume de integração, obtendo por fim que:
+\begin{equation}
+    \int_{VC}\frac{\partial}{\partial t}(\rho)d\forall + \int_{VC}\Vec{\nabla}\cdot(\rho\Vec{V})d\forall = 0
+\end{equation}
+Assim:
+\begin{equation}
+    \int_{VC}\left(\frac{\partial}{\partial t}(\rho)+ \Vec{\nabla}\cdot(\rho\Vec{V})\right)d\forall = 0
+\end{equation}
+Como pelo Teorema da Localização concluimos que se a integral de uma função continua é nula para qualquer região ou intervalo de integração, então essa função é nula também. Com isso obtemos a chamada Equação de Continuidade dada por:
+\begin{equation}
+    \frac{\partial}{\partial t}(\rho)+ \Vec{\nabla}\cdot(\rho\Vec{V}) = 0
+\end{equation}
+\subsection{Matrizes e Tensores}
+Em cálculo vetorial e mecânica dos fluidos podemos definir vetores como uma matriz coluna com 3 linhas, isto é, uma matriz $3 \times 1$. Dessa forma podemos colocar como um vetor arbitrário $\Vec{A}$ assim:
+\begin{equation}
+    \Vec{A} = \begin{bmatrix}
+    A_{x}\\
+    A_{y}\\
+    A_{z}\\
+    \end{bmatrix}
+\end{equation}
+Analogamente para um vetor arbitrário $\Vec{B}$:
+\begin{equation}
+    \Vec{B} = \begin{bmatrix}
+    B_{x}\\
+    B_{y}\\
+    B_{z}\\
+    \end{bmatrix}
+\end{equation}
+Um tensor é uma entidade matemática que é representada por 9 números, sendo assim uma matriz $3\times3$. Dessa forma definimos tensor como:
+\begin{equation}
+    \vec{\vec{\tau}} = \begin{bmatrix}
+    \tau_{xx} & \tau_{xy} & \tau_{xz} & \\
+    \tau_{yx} & \tau_{yy} & \tau_{yz} & \\
+    \tau_{zx} & \tau_{zy} & \tau_{zz} & \\
+    \end{bmatrix}
+\end{equation}
+Com isso, podemos enunciar o produto tensorial entre os vetores $\Vec{A}$ e $\Vec{B}$ como:
+\begin{equation}
+    \Vec{A}\Vec{B} = \begin{bmatrix}
+    A_{x}\cdot B_{x} & A_{x}\cdot B_{y} & A_{x}\cdot B_{z}\\
+    A_{y}\cdot B_{x} & A_{y}\cdot B_{y} & A_{y}\cdot B_{z} \\
+    A_{z}\cdot B_{x} & A_{z}\cdot B_{y} & A_{z}\cdot B_{z} \\ 
+    \end{bmatrix}
+    = \begin{bmatrix}
+    A_{x}B_{x} & A_{x}B_{y} & A_{x}B_{z}\\
+    A_{y}B_{x} & A_{y}B_{y} & A_{y}B_{z}\\
+    A_{z}B_{x} & A_{z}B_{y} & A_{z}B_{z}\\ 
+    \end{bmatrix}
+\end{equation}
+Dessa forma podemos definir um tensor transposto $(\Vec{\Vec{\tau}})^{T}$ dessa forma:
+\begin{equation}
+    (\Vec{\Vec{\tau}})^{T} = \begin{bmatrix}
+    \tau_{xx} & \tau_{yz} & \tau_{zx}\\
+    \tau_{xy} & \tau{yy} & \tau_{zy}\\
+    \tau_{xz} & \tau{yz} & \tau_{zz}\\
+    \end{bmatrix}
+\end{equation}
+\subsection{Equação de Bernoulli com base na Equação de Navier Stokes}
+A equação de Bernoulli é uma relação aproximada entre pressão, velocidade e elevação válida para regiões em que o escoamento é incompressível, em regime permanente e com forças de atrito viscosas resultantes desprezíveis. 
+Pela Equação de Navier Stokes:
+\begin{equation}
+    \rho\frac{\partial\vec{V}}{\partial t} + \rho(\vec{V}\cdot\vec{\nabla})\vec{V} = \rho\vec{g} - \vec{\nabla}p + \mu\nabla^{2}\vec{V}
+\end{equation}
+Como o regime é permanente e sem forças viscosas:
+\begin{equation}
+    \rho\cancelto{0}{\frac{\partial\vec{V}}{\partial t}} + \rho(\vec{V}\cdot\vec{\nabla})\vec{V} = \rho\vec{g} - \vec{\nabla}p + \cancelto{0}{\mu\nabla^{2}\vec{V}}
+\end{equation}
+Obtemos:
+\begin{equation}
+    \rho(\vec{V}\cdot\vec{\nabla})\vec{V} = \rho\vec{g} - \vec{\nabla}p
+    \label{equacaonavierstokesadaptada}
+\end{equation}
+Pela seguinte identidade vetorial:
+\begin{equation}
+    (\vec{V}\cdot\vec{\nabla})\vec{V} = \frac{1}{2}\nabla(V^{2}) - \vec{V}\times (\vec{\nabla} \times \vec{V})
+    \label{identidadevetorial}
+\end{equation}
+em que aqui tratamos $V$ como o módulo do vetor velocidade:
+\begin{equation}
+    V = \sqrt{\vec{V}\cdot\vec{V}} = |\vec{V}|
+\end{equation}
+A aceleração gravitacional é dada vetoralmente por:
+\begin{equation}
+    \vec{g} = -g\hat{k}
+\end{equation}
+com $g$ constante, mas...
+\begin{equation}
+    \vec{\nabla}z = \hat{k}
+\end{equation}
+Então, podemos escrever:
+\begin{equation}
+    \vec{g} = \vec{\nabla}(-gz) = -\vec{\nabla}(gz)
+    \label{vetorg}
+\end{equation}
+Substituindo ~(\ref{identidadevetorial}) e ~(\ref{vetorg}) em ~(\ref{equacaonavierstokesadaptada}), temos:
+\begin{equation}
+    \frac{1}{2}\rho\vec{\nabla}(V^{2}) + \vec{\nabla}p + \rho\vec{\nabla}(gz) = \rho\vec{V} \times (\vec{\nabla} \times \vec{V})
+\end{equation}
+Como o escoamento é incompressível, o $\rho$ é constante:
+\begin{equation}
+    \vec{\nabla}\left(\frac{1}{2}\rho\vec{V^{2}}\right) + \vec{\nabla}p + \nabla(\rho gz) = \rho\vec{V} \times (\vec{\nabla} \times \vec{V})
+\end{equation}
+Agrupando os termos em função de $\vec{\naba}$:
+\begin{equation}
+    \vec{\nabla}\left(\frac{1}{2}\rho{V^{2}} + p + \rho gz\right) = \rho\vec{V} \times (\vec{\nabla} \times \vec{V})
+\end{equation}
+Vamos assumir que o escoamento é irrotacional, isto é, o seu vetor de vorticidade $\vec{\Omega} = \vec{\nabla} \times \vec{V} = \vec{0}$. Logo temos que:
+\begin{equation}
+    \vec{\nabla}\left(\frac{1}{2}\rho{V^{2}} + p + \rho gz\right) = \cancelto{0}{\rho\vec{V} \times (\vec{\nabla} \times \vec{V})}
+\end{equation}
+Dessa forma temos que por fim:
+\begin{equation}
+    \vec{\nabla}\left(\frac{1}{2}\rho{V^{2}} + p + \rho gz\right) = \vec{0}
+\end{equation}
+Que é a mesma coisa que escrevermos que:
+\begin{equation}
+    \frac{1}{2}\rho{V^{2}} + p + \rho gz = cte
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
